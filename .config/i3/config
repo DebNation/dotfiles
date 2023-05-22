@@ -64,10 +64,10 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -88,7 +88,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -189,8 +189,31 @@ bindsym $mod+r mode "resize"
 # bar {
 #         status_command i3status
 # }
-#
+# A 3 px border
+default_border pixel 5
+# Activate smart borders (always)
+smart_borders on
+
+hide_edge_borders both
+
+## Screenshots
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id picom --experimental-backends --config $HOME/.config/i3/picom.conf
-exec picom --experimental-backends
+exec picom --no-startup-id --experimental-backends
+# to set touchpad Natural Scrolling
+exec_always --no-startup-id xinput set-prop "ELAN0718:00 04F3:30FD Touchpad" "libinput Natural Scrolling Enabled" 1
+# bind brightness to laptop brightness button
+# increase brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+#Decrese brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
