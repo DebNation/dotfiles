@@ -195,11 +195,11 @@ bindsym $mod+r mode "resize"
 default_border pixel 5
 # Activate smart borders (always)
 # smart_borders on
-gaps inner 5
-gaps outer 2
+gaps inner 10
+gaps outer 5
 hide_edge_borders smart
 # Adjust border width
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 4
 
 # Theme
 set $rosewater #f5e0dc
@@ -231,7 +231,7 @@ set $crust     #11111b
 # target                 title     bg    text   indicator  border
 client.focused           $pink     $base $text  $rosewater $pink
 client.focused_inactive  $mauve    $base $text  $rosewater $mauve
-client.unfocused         $mauve    $base $text  $rosewater $mantle
+client.unfocused         $mauve    $base $text  $rosewater $overlay0
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
@@ -264,3 +264,6 @@ exec_always --no-startup-id xinput set-prop "ELAN0718:00 04F3:30FD Touchpad" "li
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 #Decrese brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# picom compositor
+exec_always --no-startup-id picom --experimental-backends &
