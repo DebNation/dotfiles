@@ -1,80 +1,98 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-    "spacing": 4,
-    "output": "eDP-1",
-    "modules-left": ["wlr/workspaces"],
-    "modules-center": ["wlr/taskbar"],
-    "modules-right": ["tray", "pulseaudio", "cpu", "memory", "network#eth", "network#wg", "clock"],
-    "wlr/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "<b>{name}</b>",
-        "persistent_workspaces": {
-            "2": ["eDP-1"]
-        }
+  "layer": "top",
+  "modules-left": ["custom/launcher", "wlr/workspaces", "gamemode"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["tray", "pulseaudio","network","upower", "clock"],
+  "custom/launcher": {
+    /* "format": " nixos", */
+    "format": " "
+  },
+  "gamemode": {
+    "format": "{glyph}",
+    "format-alt": "{glyph} {count}",
+    "glyph": "󰊴",
+    "hide-not-running": true,
+    "use-icon": true,
+    "icon-name": "input-gaming-symbolic",
+    "icon-spacing": 4,
+    "icon-size": 20,
+    "tooltip": true,
+    "tooltip-format": "Games running: {count}"
+  },
+  "wlr/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
     },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 16,
-        "icon-theme": "Adwaita",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-right": "close",
-        "all-outputs": true
+    "sort-by-number": true
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "󰂑",
+      "headset": "󰂑",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", ""]
     },
-    "tray": {
-        "spacing": 10
+        "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "network": {
+    "interval" : 2,
+    "format": "{ifname}",
+    "format-wifi": "{essid}  {bandwidthTotalBytes}",
+    "format-ethernet": "Connected  {bandwidthTotalBytes}",
+    "format-disconnected": "Internet! ⚠", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+},
+
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "<span color='#33ccff'><b>VOL</b></span> {volume}% {format_source}",
-        "format-muted": "<span color='#33ccff'><b>VOL</b></span> {volume}% 󰖁  {format_source}",
-        "format-source": "{volume}%",
-        "format-source-muted": "󰍭",
-        "on-click": "pavucontrol",
-        "on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "on-click-middle": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-        "on-scroll-up": "volume_up",
-        "on-scroll-down": "volume_down"
-    },
-    "cpu": {
-        "format": "<span color='#33ccff'><b>CPU</b></span> {usage}%",
-        "on-click": "footclient -w 1000x700 -T htop htop &"
-    },
-    "memory": {
-        "format": "<span color='#33ccff'><b>MEM</b></span> {}%",
-        "on-click": "footclient -w 1000x700 -T htop htop -s PERCENT_MEM &"
-    },
-    "network#eth": {
-        "interval": 3,
-        "format-ethernet": "<span color='#33ccff'><b>NET</b></span> {bandwidthUpBytes} {bandwidthDownBytes} 󰈀",
-        "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
-        "format-disconnected": "<span color='#33ccff'><b>NET</b></span> ⚠",
-        "on-click": "nm-connection-editor &",
-        "on-click-right": "footclient -w 1000x700 -H -T nmcli nmcli connection show &"
-    },
-    "network#wg": {
-        "interface": "wg-midgard",
-        "interval": 3,
-        "format-ethernet": "<span color='#33ccff'><b>VPN</b></span> 󰖂",
-        "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
-        "format-disconnected": "",
-        "on-click": "nm-connection-editor &",
-        "on-click-right": "footclient -w 1000x700 -H -T nmcli nmcli connection show &"
-    },
-    "clock": {
-        "timezone": "Asia/Kolkata",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<big><tt>{calendar}</tt></big>",
-        "format": "<span color='#33ccff'><b>DATE</b></span> {:%I:%M}",
-        "format-alt": "<span color='#33ccff'><b>DATE</b></span> {:%d-%m-%Y}",
-        "on-click-right": "thunderbird &",
-        "calendar": {
-            "format": {
-                "today": "<span color='#33ccff'><b><u>{}</u></b></span>"
-            }
-        }
-    }
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 25
+  },
+  "upower": {
+    "icon-size" : 15,
+     "charging" : {
+        "format" : "charging..",
+      },
+     "hide-if-empty": true,
+     "tooltip": true,
+     "tooltip-spacing": 20
+},
+  "clock": {
+    "format": "{:%A %I:%M} ",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  }
 }
+
