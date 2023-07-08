@@ -5,7 +5,7 @@
   "modules-right": ["tray", "pulseaudio","network","upower", "clock"],
   "custom/launcher": {
     /* "format": " nixos", */
-    "format": " "
+    "format": " DebxD"
   },
   "gamemode": {
     "format": "{glyph}",
@@ -59,10 +59,9 @@
     "ignored-sinks": ["Easy Effects Sink"]
   },
   "network": {
-    "interval" : 2,
     "format": "{ifname}",
-    "format-wifi": "{essid}  {bandwidthTotalBytes}",
-    "format-ethernet": "Connected  {bandwidthTotalBytes}",
+    "format-wifi": "{essid}  ({signalStrength}%) ",
+    "format-ethernet": "Connected  ",
     "format-disconnected": "Internet! ⚠", //An empty format will hide the module.
     "tooltip-format": "{ifname} via {gwaddr} ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
