@@ -51,7 +51,7 @@
     },
     "network": {
         "interval": 1,
-        "format-wifi": "<span color='#33ccff'><b>WIFI</b></span>  {essid} ({signalStrength}%)   {bandwidthDownBytes}  {bandwidthUpBytes}   ",
+        "format-ethernet": "<span color='#33ccff'><b>WIFI</b></span>  {essid} ({signalStrength}%)   {bandwidthDownBytes}  {bandwidthUpBytes}   ",
         "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
         "format-disconnected": "<span color='#33ccff'><b>WIFI</b></span> ⚠",
         "on-click": "nm-connection-editor &",
@@ -59,7 +59,6 @@
     },
 
     "network#eth": {
-        "interval": 1,
         "format-ethernet": "<span color='#33ccff'><b>NET</b></span>   {bandwidthDownBytes}  {bandwidthUpBytes} 󰈀",
         "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
         "format-disconnected": "<span color='#33ccff'><b>NET</b></span> ⚠",
@@ -68,7 +67,6 @@
     },
     "network#wg": {
         "interface": "wg-midgard",
-        "interval": 1,
         "format-ethernet": "<span color='#33ccff'><b>VPN</b></span> 󰖂",
         "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
         "format-disconnected": "",

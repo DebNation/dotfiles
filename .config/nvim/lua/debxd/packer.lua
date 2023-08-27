@@ -52,5 +52,13 @@ return require('packer').startup(function(use)
          require('Comment').setup()
      end
  }
+ use({ 'toppair/peek.nvim', run = 'deno task --quiet build:fast' })
+ use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+}
+use('xiyaowong/transparent.nvim')
 end)
 

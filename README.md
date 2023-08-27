@@ -1,19 +1,23 @@
 #### config files that are used to customize/rice linux as per my workflow and liking
 
 ## Dependencies:
+### For Hyprland : 
+    `yay -S gtk3 hyprshot hyprpaper hyprland kitty brightnessctl 
+    pipewire-pulse pipewire rofi cava-git swayidle swaylock 
+    hyprpicker pavucontrol xdg-desktop-portal-hyprland swaync 
+    sof-firmware gnome-keyring xclip`
 
-1 . Neovim :
-
-- deno(must add it to that path so that neovim plugin can detect it, follow this https://www.digitalocean.com/community/tutorials/how-to-install-the-deno-javascript-runtime-on-ubuntu-20-04)
-
-2. BlurMe :
-
-- wmctrl
-- feh
-- imagemagick
+    * Note : you must have yay installed beforehand
 
 ## Showcase :
+### i3
 
 <p align="center">
-  <img src="assets/Tue May 23 11:04:50 AM IST 2023.png"/>
+  <img src="assets/i3.png"/>
 </p>
+
+### Hyprland
+<p align="center">
+  <img src="assets/hyprland.png"/>
+</p>
+

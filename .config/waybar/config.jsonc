@@ -1,0 +1,194 @@
+ {
+    "position": "top",
+    "layer": "top",
+    "height": 16,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["custom/launcher", "wlr/workspaces", "custom/playerctl", "custom/playerlabel"],
+     "modules-center": ["hyprland/window"],
+    "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower", "clock"],
+    // Modules configuration
+	"clock": {
+		"format": " {:%A %I:%M} ",
+		"tooltip": "true",
+
+            "tooltip-format": "<tt>{calendar}</tt>",
+            "calendar": {
+                    "mode"          : "month",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+
+        	"format-alt": " {:%d/%m}"
+	},
+	
+
+	"wlr/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+//			"1": "一",
+//			"2": "二",
+//			"3": "三",
+//			"4": "四",
+//			"5": "五",
+    "sort-by-number": true
+    },
+    },
+
+    "custom/playerctl": {
+      "format": "{icon}",
+      "return-type": "json",
+      "max-length": 30,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#bac2de'>󰒮 󰏥 󰒭</span>",
+        "Paused": "<span foreground='#45475a'>󰒮 󰐌 󰒭</span>"
+      },
+    },
+
+    "custom/playerlabel": {
+      "format": "<span>{}</span>",
+      "return-type": "json",
+      "max-length": 48,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'>󰒮 󰏥 󰒭</span>",
+        "Paused": "<span foreground='#928374'>󰒮 󰐌 󰒭</span>"
+      },
+    },
+
+	"battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format":"{icon}  {capacity}%",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+	},
+    "hyprland/window" : {
+        "max-length" : 50,
+    },
+
+ 	
+	// "network": {
+ //        	"format-wifi": "󰤨",
+ //        	"format-ethernet": " {essid} ({signalStrength}%)   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+ //        	"format-linked": " {ifname} (No IP)",
+ //        	"format-disconnected": "󰤭",
+ //        	"format-alt": " {ifname}: {ipaddr}/{cidr}",
+ //          "tooltip-format": "{essid}",
+ //          "on-click-right": "nm-connection-editor"
+	// },
+    "network#eth": {
+        "interval" : 1,
+        "format" :  "<span color='#33ccff'><b>{essid}</b></span>  {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": "<span color='#33ccff'><b>NET</b></span>  {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
+        "format-disconnected": "<span color='#33ccff'><b>NET</b></span> ⚠",
+        "on-click": "nm-connection-editor &",
+        "on-click-right": "footclient -w 1000x700 -H -T nmcli nmcli connection show &"
+    },
+    "network#wifi": {
+        "interface": "wg-midgard",
+        "format-wifi": "<span color='#33ccff'><b>VPN</b></span> 󰖂",
+        "tooltip-format": "{ifname} via {ipaddr}/{cidr}",
+        "format-disconnected": "",
+        "on-click": "nm-connection-editor &",
+        "on-click-right": "footclient -w 1000x700 -H -T nmcli nmcli connection show &"
+    },
+
+
+	"tray": {
+		"icon-size": 16,
+		"spacing": 5
+	},
+
+	"backlight": {
+        // "device": "acpi_video1",
+	"format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+//	"on-scroll-up":,
+//	"on-scroll-down":,
+	},
+
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+        	"format-muted": "󰝟",
+		"format-icons": {
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
+		"on-click": "bash ~/.scripts/volume mute",
+    "on-scroll-up": "bash ~/.scripts/volume up",
+    "on-scroll-down": "bash ~/.scripts/volume down",
+    "scroll-step": 5,
+		"on-click-right": "pavucontrol"
+  },
+  "custom/randwall": {
+    "format": "󰏘",
+    "on-click": "bash $HOME/.config/hypr/randwall.sh",
+    "on-click-right": "bash $HOME/.config/hypr/wall.sh"
+  },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun",
+//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
+    "on-click-right": "bash $HOME/.config/rofi/run.sh"  
+//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
+  },
+
+  "custom/wf-recorder": {
+		"format": "{}",
+		"interval": "once",
+		"exec": "echo ''",
+		"tooltip": "false",
+		"exec-if": "pgrep 'wf-recorder'",
+		"on-click": "exec ./scripts/wlrecord.sh",
+		"signal": 8
+	},
+
+  "custom/hyprpicker": {
+    "format": "󰈋",
+    "on-click": "hyprpicker -a -f hex",
+    "on-click-right": "hyprpicker -a -f rgb"
+  },
+   "upower": {
+    "icon-size" : 15,
+     "charging" : {
+        "format" : "charging..",
+      },
+     "hide-if-empty": true,
+     "tooltip": true,
+     "tooltip-spacing": 20
+},
+
+  }
+}          }
