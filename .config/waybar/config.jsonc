@@ -6,7 +6,7 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left": ["custom/launcher", "wlr/workspaces", "custom/playerctl", "custom/playerlabel"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
      "modules-center": ["hyprland/window"],
     "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower", "clock"],
     // Modules configuration
@@ -32,7 +32,7 @@
 
         	"format-alt": " {:%d/%m}"
 	},
-	
+
 
 	"wlr/workspaces": {
         "active-only": false,
@@ -98,7 +98,7 @@
         "max-length" : 50,
     },
 
- 	
+
 	// "network": {
  //        	"format-wifi": "󰤨",
  //        	"format-ethernet": " {essid} ({signalStrength}%)   {bandwidthDownBytes}  {bandwidthUpBytes} ",
@@ -161,8 +161,8 @@
     "format": "",
     "on-click": "rofi -show drun",
 //    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
-    "on-click-right": "bash $HOME/.config/rofi/run.sh"  
-//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
+    "on-click-right": "bash $HOME/.config/rofi/run.sh"
+//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"
   },
 
   "custom/wf-recorder": {
