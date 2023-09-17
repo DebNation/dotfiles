@@ -12,13 +12,7 @@ return require("packer").startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	})
+	use("rebelot/kanagawa.nvim")
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
 	use("ThePrimeagen/harpoon")
@@ -53,7 +47,6 @@ return require("packer").startup(function(use)
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 	})
-	use("xiyaowong/transparent.nvim")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
@@ -61,6 +54,9 @@ return require("packer").startup(function(use)
 	use("mhartington/formatter.nvim")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
-  use("JoosepAlviste/nvim-ts-context-commentstring")
-
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("akinsho/toggleterm.nvim")
+	use("stefanlogue/hydrate.nvim")
+	use("xiyaowong/transparent.nvim")
+  use("f-person/git-blame.nvim")
 end)

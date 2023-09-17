@@ -1,5 +1,5 @@
  {
-    "position": "top",
+   "position": "top",
     "layer": "top",
     "height": 16,
     "margin-top": 0,
@@ -8,7 +8,7 @@
     "margin-right": 0,
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
      "modules-center": ["hyprland/window"],
-    "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower", "clock"],
+    "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower","custom/night","custom/power", "clock"],
     // Modules configuration
 	"clock": {
 		"format": " {:%A %I:%M} ",
@@ -188,6 +188,23 @@
      "hide-if-empty": true,
      "tooltip": true,
      "tooltip-spacing": 20
+},
+"custom/night" : {
+"icon-size" : 16,
+"format" : "  ",
+"margin-top": 0,
+"margin-bottom": 0,
+ "margin-left": 0,
+"margin-right": 0,
+"on-click" : "gammastep -O 4000 &",
+"on-click-right" : "pkill gammastep"
+
+},
+"custom/power" : {
+"icon-size" : 16,
+"format" : "  ",
+"on-click" : "wlogout",
+
 },
 
   }
