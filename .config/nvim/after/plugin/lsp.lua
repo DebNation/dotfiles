@@ -46,17 +46,17 @@ cmp.setup({
 -- lsp.set_preferences({
 -- 	suggest_lsp_servers = false,
 -- 	sign_icons = {
--- 		error = "E",
+-- 		error = "X",
 -- 		warn = "W",
 -- 		hint = "H",
 -- 		info = "I",
 -- 	},
 -- })
 lsp.set_sign_icons({
-	error = "✘",
-	warn = "▲",
-	hint = "⚑",
-	info = "»",
+	error = "",
+	warn = "",
+	info = "",
+	hint = "󰌵",
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -84,6 +84,24 @@ lsp.on_attach(function(client, bufnr)
 	-- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+-- EXAMPLE HOW TO SETUP CUSTOM CONFIG --
+--
+-- require('mason-lspconfig').setup({
+--     ensure_installed = {'tsserver', 'rust_analyzer'},
+--     handlers = {
+--       lsp_zero.default_setup,
+--       tsserver = function()
+--         require('lspconfig').tsserver.setup({
+--           settings = {
+--             completions = {
+--               completeFunctionCalls = true
+--             }
+--           }
+--         })
+--       end,
+--     },
+--   })
+--
 lsp.setup()
 
 vim.diagnostic.config({

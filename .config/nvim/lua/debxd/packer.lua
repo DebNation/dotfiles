@@ -8,11 +8,10 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
+		tag = "0.1.3",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
-	use("rebelot/kanagawa.nvim")
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
 	use("ThePrimeagen/harpoon")
@@ -40,13 +39,13 @@ return require("packer").startup(function(use)
 			require("Comment").setup()
 		end,
 	})
-	use({ "toppair/peek.nvim", run = "deno task --quiet build:fast" })
 	use({
 		"nvim-tree/nvim-tree.lua",
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 	})
+
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "nvim-tree/nvim-web-devicons", opt = true },
@@ -57,6 +56,36 @@ return require("packer").startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("akinsho/toggleterm.nvim")
 	use("stefanlogue/hydrate.nvim")
-	use("xiyaowong/transparent.nvim")
-  use("f-person/git-blame.nvim")
+	use("f-person/git-blame.nvim")
+	use("kylechui/nvim-surround")
+	use("leafOfTree/vim-matchtag")
+	use("andymass/vim-matchup")
+	use("wakatime/vim-wakatime")
+	-- nvim v0.7.2
+	use({
+		"kdheepak/lazygit.nvim",
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
+	})
+	-- THEMES
+
+	use({ "rose-pine/neovim", as = "rose-pine" })
+	use("kvrohit/mellow.nvim")
+	use("Mofiqul/dracula.nvim")
+	use("DebXD/oh-lucy.nvim")
+	use("savq/melange-nvim")
+	use("rebelot/kanagawa.nvim")
+	use("sainnhe/everforest")
+	use("ramojus/mellifluous.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("EdenEast/nightfox.nvim")
+	use("folke/tokyonight.nvim")
+	use("rmehri01/onenord.nvim")
+	use("LunarVim/horizon.nvim")
+	use("vigoux/oak")
+	use("projekt0n/caret.nvim")
+	use("sainnhe/gruvbox-material")
+	--Formatter
+	use("stevearc/conform.nvim")
 end)

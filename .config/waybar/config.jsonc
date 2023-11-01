@@ -11,7 +11,7 @@
     "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower","custom/night","custom/power", "clock"],
     // Modules configuration
 	"clock": {
-		"format": " {:%A %I:%M} ",
+		"format": "{:%A, %B %d, %R} ",
 		"tooltip": "true",
 
             "tooltip-format": "<tt>{calendar}</tt>",
@@ -196,7 +196,7 @@
 "margin-bottom": 0,
  "margin-left": 0,
 "margin-right": 0,
-"on-click" : "gammastep -O 4000 &",
+"on-click" : "gammastep -O 5000 &",
 "on-click-right" : "pkill gammastep"
 
 },

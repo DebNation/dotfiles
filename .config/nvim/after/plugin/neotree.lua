@@ -1,0 +1,46 @@
+-- local highlights = require("neo-tree.ui.highlights")
+--
+--
+-- require("neo-tree").setup({
+-- 	default_component_configs = {
+-- 		indent = {
+-- 			with_markers = false,
+-- 			indent_marker = "│",
+-- 			last_indent_marker = "└",
+-- 			indent_size = 2,
+-- 			with_expanders = true,
+-- 			expander_collapsed = "",
+-- 			expander_expanded = "",
+-- 			expander_highlight = "NeoTreeExpander",
+-- 		},
+--
+-- 		filesystem = {
+-- 			components = {
+-- 				harpoon_index = function(config, node, state)
+-- 					local Marked = require("harpoon.mark")
+-- 					local path = node:get_id()
+-- 					local succuss, index = pcall(Marked.get_index_of, path)
+-- 					if succuss and index and index > 0 then
+-- 						return {
+-- 							text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
+-- 							highlight = config.highlight or "NeoTreeDirectoryIcon",
+-- 						}
+-- 					else
+-- 						return {}
+-- 					end
+-- 				end,
+-- 			},
+-- 			renderers = {
+-- 				file = {
+-- 					{ "icon" },
+-- 					{ "name", use_git_status_colors = true },
+-- 					{ "harpoon_index" }, --> This is what actually adds the component in where you want it
+-- 					{ "diagnostics" },
+-- 					{ "git_status", highlight = "NeoTreeDimText" },
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
+--
+-- vim.keymap.set("n", "<leader>e", "<Cmd> Neotree toggle <CR>")

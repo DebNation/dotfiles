@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/debxd/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1694285958/share/lua/5.1/?/init.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1694285958/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/debxd/.cache/nvim/packer_hererocks/2.1.1694285958/lib/lua/5.1/?.so"
+local package_path_str = "/home/debxd/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1697887905/share/lua/5.1/?/init.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?.lua;/home/debxd/.cache/nvim/packer_hererocks/2.1.1697887905/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/debxd/.cache/nvim/packer_hererocks/2.1.1697887905/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -85,10 +85,35 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["caret.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/caret.nvim",
+    url = "https://github.com/projekt0n/caret.nvim"
+  },
+  catppuccin = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["conform.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/conform.nvim",
+    url = "https://github.com/stevearc/conform.nvim"
+  },
+  ["dracula.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/dracula.nvim",
+    url = "https://github.com/Mofiqul/dracula.nvim"
+  },
+  everforest = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["formatter.nvim"] = {
     loaded = true,
@@ -100,10 +125,20 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/git-blame.nvim",
     url = "https://github.com/f-person/git-blame.nvim"
   },
+  ["gruvbox-material"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/gruvbox-material",
+    url = "https://github.com/sainnhe/gruvbox-material"
+  },
   harpoon = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["horizon.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/horizon.nvim",
+    url = "https://github.com/LunarVim/horizon.nvim"
   },
   ["hydrate.nvim"] = {
     loaded = true,
@@ -114,6 +149,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
     url = "https://github.com/rebelot/kanagawa.nvim"
+  },
+  ["lazygit.nvim"] = {
+    config = { "\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0" },
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -135,6 +176,26 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["melange-nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/melange-nvim",
+    url = "https://github.com/savq/melange-nvim"
+  },
+  ["mellifluous.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/mellifluous.nvim",
+    url = "https://github.com/ramojus/mellifluous.nvim"
+  },
+  ["mellow.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/mellow.nvim",
+    url = "https://github.com/kvrohit/mellow.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
@@ -149,6 +210,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -175,15 +241,25 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
+  oak = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/oak",
+    url = "https://github.com/vigoux/oak"
+  },
+  ["oh-lucy.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/oh-lucy.nvim",
+    url = "https://github.com/DebXD/oh-lucy.nvim"
+  },
+  ["onenord.nvim"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/onenord.nvim",
+    url = "https://github.com/rmehri01/onenord.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  ["peek.nvim"] = {
-    loaded = true,
-    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/peek.nvim",
-    url = "https://github.com/toppair/peek.nvim"
   },
   playground = {
     loaded = true,
@@ -195,6 +271,16 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rose-pine"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
+  spaceduck = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/spaceduck",
+    url = "https://github.com/pineapplegiant/spaceduck"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -205,10 +291,10 @@ _G.packer_plugins = {
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
-  ["transparent.nvim"] = {
+  ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/transparent.nvim",
-    url = "https://github.com/xiyaowong/transparent.nvim"
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   undotree = {
     loaded = true,
@@ -219,10 +305,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/debxd/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-matchtag"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/vim-matchtag",
+    url = "https://github.com/leafOfTree/vim-matchtag"
+  },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/vim-matchup",
+    url = "https://github.com/andymass/vim-matchup"
+  },
+  ["vim-wakatime"] = {
+    loaded = true,
+    path = "/home/debxd/.local/share/nvim/site/pack/packer/start/vim-wakatime",
+    url = "https://github.com/wakatime/vim-wakatime"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: lazygit.nvim
+time([[Config for lazygit.nvim]], true)
+try_loadstring("\27LJ\2\nL\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\flazygit\19load_extension\14telescope\frequire\0", "config", "lazygit.nvim")
+time([[Config for lazygit.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")

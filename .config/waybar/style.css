@@ -1,162 +1,166 @@
 * {
-    border: none;
-    border-radius: 5px;
-    font-family: JetBrainsMono;
-    font-size: 15px;
-    font-style: normal;
-    min-height: 0;
+  border: none;
+  border-radius: 5px;
+  font-family: JetBrainsMono;
+  font-size: 15px;
+  font-style: normal;
+  min-height: 0;
 }
 
 window#waybar {
-    background: transparent;
-    color: #cdd6f4;
+  background: transparent;
+  color: #cdd6f4;
 }
 
 #workspaces {
-	background: #1e1e2e;
-	margin: 5px 5px 5px 5px;
+  background: #1e1e2e;
+  margin: 5px 5px 5px 5px;
   padding: 0px 5px 0px 5px;
-	border-radius: 16px;
+  border-radius: 16px;
   border: solid 0px #cdd6f4;
   font-weight: normal;
   font-style: normal;
 }
 #workspaces button {
-    padding: 0px 5px;
-    border-radius: 16px;
-    color: #6c7086;
+  padding: 0px 5px;
+  border-radius: 16px;
+  color: #6c7086;
 }
 
 #workspaces button.active {
-    color: #cdd6f4;
-    background-color: transparent;
-    border-radius: 16px;
+  color: #cdd6f4;
+  background-color: transparent;
+  border-radius: 16px;
 }
 
 #workspaces button:hover {
-	background-color: #E6B9C6;
-	color: black;
-	border-radius: 16px;
+  background-color: #e6b9c6;
+  color: black;
+  border-radius: 16px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher {
-	background: transparent;
-	padding: 5px 5px 5px 5px;
-	margin: 5px 5px 5px 5px;
+#custom-date,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#custom-randwall,
+#custom-launcher {
+  background: transparent;
+  padding: 5px 5px 5px 5px;
+  margin: 5px 5px 5px 5px;
   border-radius: 8px;
   border: solid 0px #cdd6f4;
 }
 
 #custom-date {
-	color: #D3869B;
+  color: #d3869b;
 }
 
 #custom-power {
-
-	color: #24283b;
-	background-color: #db4b4b;
-	border-radius: 5px;
-	margin-right: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	padding: 5px 10px;
+  color: #db4b4b;
+  /* background-color: #db4b4b; */
+  border-radius: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  padding: 5px 5px;
 }
 
 #tray {
-    background: #1e1e2e;
-    margin: 5px 5px 5px 5px;
-    border-radius: 16px;
-    padding: 0px 5px;
-    /*border-right: solid 1px #282738;*/
+  background: #1e1e2e;
+  margin: 5px 5px 5px 5px;
+  border-radius: 5px;
+  padding: 0px 5px;
+  /*border-right: solid 1px #282738;*/
 }
 
 #clock {
-    color: #89b4fa;;
-    background-color: #1e1e2e;
-    border-radius: 0px 0px 0px 24px;
-    padding-left: 13px;
-    padding-right: 15px;
-    margin-right: 0px;
-    margin-left: 10px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-weight: bold;
-    /*border-left: solid 1px #282738;*/
+  color: #89b4fa;
+  background-color: #1e1e2e;
+  border-radius: 0px 0px 0px 24px;
+  padding-left: 10px;
+  padding-right: 15px;
+  margin-right: 0px;
+  margin-left: 1px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  /*border-left: solid 1px #282738;*/
 }
 
-
 #battery {
-    color: #9ece6a;
+  color: #9ece6a;
 }
 
 #battery.charging {
-    color: #9ece6a;
+  color: #9ece6a;
 }
 
 #battery.warning:not(.charging) {
-    background-color: #f7768e;
-    color: #24283b;
-    border-radius: 5px 5px 5px 5px;
+  background-color: #f7768e;
+  color: #24283b;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #backlight {
-    color: #cdd6f4;
-    border-radius: 0px 0px 0px 0px;
-    margin: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px 0px;
+  color: #cdd6f4;
+  border-radius: 0px 0px 0px 0px;
+  margin: 5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px 0px;
 }
 
 #network {
-    color: #cdd6f4;
-    border-radius: 8px;
-    margin-right: 5px;
+  color: #cdd6f4;
+  border-radius: 8px;
+  margin-right: 5px;
 }
 
 #pulseaudio {
-    color: #cdd6f4;
-    border-radius: 8px;
-    margin-left: 0px;
+  color: #cdd6f4;
+  border-radius: 8px;
+  margin-left: 0px;
 }
 
 #pulseaudio.muted {
-    background: transparent;
-    color: #928374;
-    border-radius: 8px;
-    margin-left: 0px;
+  background: transparent;
+  color: #928374;
+  border-radius: 8px;
+  margin-left: 0px;
 }
 
 #custom-randwall {
-    color: #cdd6f4;
-    border-radius: 8px;
-    margin-right: 0px;
+  color: #cdd6f4;
+  border-radius: 8px;
+  margin-right: 0px;
 }
 
 #custom-launcher {
-    color: #cdd6f4;
-    background-color: #1e1e2e;
-    border-radius: 0px 24px 0px 0px;
-    margin: 0px 0px 0px 0px;
-    padding: 0 20px 0 13px;
-    /*border-right: solid 1px #282738;*/
-    font-size: 20px;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
+  border-radius: 0px 24px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  padding: 0 20px 0 13px;
+  /*border-right: solid 1px #282738;*/
+  font-size: 20px;
 }
 
 #custom-launcher button:hover {
-    background-color: #b4befe;
-    color: transparent;
-    border-radius: 8px;
-    margin-right: -5px;
-    margin-left: 10px;
+  background-color: #b4befe;
+  color: transparent;
+  border-radius: 8px;
+  margin-right: -5px;
+  margin-left: 10px;
 }
 
 #custom-playerctl {
-	background: #1e1e2e;
-	padding-left: 15px;
+  background: #1e1e2e;
+  padding-left: 15px;
   padding-right: 14px;
-	border-radius: 16px;
+  border-radius: 16px;
   /*border-left: solid 1px #282738;*/
   /*border-right: solid 1px #282738;*/
   margin-top: 5px;
@@ -168,77 +172,77 @@ window#waybar {
 }
 
 #custom-playerlabel {
-    background: transparent;
-    padding-left: 10px;
-    padding-right: 15px;
-    border-radius: 16px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: normal;
-    font-style: normal;
+  background: transparent;
+  padding-left: 10px;
+  padding-right: 15px;
+  border-radius: 16px;
+  /*border-left: solid 1px #282738;*/
+  /*border-right: solid 1px #282738;*/
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 #window {
-    background: #1e1e2e;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 16px;
-    /*border-left: solid 1px #282738;*/
-    /*border-right: solid 1px #282738;*/
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-weight: normal;
-    font-style: normal;
+  background: #1e1e2e;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 16px;
+  /*border-left: solid 1px #282738;*/
+  /*border-right: solid 1px #282738;*/
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-style: normal;
 }
 
 #custom-wf-recorder {
-    padding: 0 20px;
-    color: #cdd6f4;
-    background-color: #1E1E2E;
+  padding: 0 20px;
+  color: #cdd6f4;
+  background-color: #1e1e2e;
 }
 
 #cpu {
-    background-color: #1e1e2e;
-    /*color: #FABD2D;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-    font-weight: bold;
+  background-color: #1e1e2e;
+  /*color: #FABD2D;*/
+  border-radius: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 10px 0px 10px;
+  font-weight: bold;
 }
 
 #memory {
-    background-color: #1e1e2e;
-    /*color: #83A598;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-    font-weight: bold;
+  background-color: #1e1e2e;
+  /*color: #83A598;*/
+  border-radius: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 10px 0px 10px;
+  font-weight: bold;
 }
 
 #disk {
-    background-color: #1e1e2e;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 10px 0px 10px;
-    font-weight: bold;
+  background-color: #1e1e2e;
+  /*color: #8EC07C;*/
+  border-radius: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 10px 0px 10px;
+  font-weight: bold;
 }
 
 #custom-hyprpicker {
-    background-color: #1e1e2e;
-    /*color: #8EC07C;*/
-    border-radius: 16px;
-    margin: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 0px 11px 0px 9px;
-    font-weight: bold;
+  background-color: #1e1e2e;
+  /*color: #8EC07C;*/
+  border-radius: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 11px 0px 9px;
+  font-weight: bold;
 }
