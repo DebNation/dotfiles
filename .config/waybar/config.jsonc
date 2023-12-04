@@ -6,8 +6,8 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
-     "modules-center": ["hyprland/window"],
+    "modules-left": ["custom/launcher",  "custom/playerctl", "custom/playerlabel"],
+     "modules-center": ["hyprland/workspaces"],
     "modules-right": ["tray",  "pulseaudio", "backlight", "network#eth","network#wifi","upower","custom/night","custom/power", "clock"],
     // Modules configuration
 	"clock": {
@@ -34,7 +34,7 @@
 	},
 
 
-	"wlr/workspaces": {
+	"hyprland/workspaces": {
         "active-only": false,
         "all-outputs": true,
         "disable-scroll": false,
@@ -48,21 +48,23 @@
 //			"3": "三",
 //			"4": "四",
 //			"5": "五",
-    "sort-by-number": true
+			"urgent": "",
+            "default": "",
+       "sort-by-number": true
     },
-    },
+   },
 
     "custom/playerctl": {
       "format": "{icon}",
       "return-type": "json",
-      "max-length": 30,
+      "max-length": 10,
       "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
       "on-click-middle": "playerctl play-pause",
       "on-click": "playerctl previous",
       "on-click-right": "playerctl next",
       "format-icons": {
-        "Playing": "<span foreground='#bac2de'>󰒮 󰏥 󰒭</span>",
-        "Paused": "<span foreground='#45475a'>󰒮 󰐌 󰒭</span>"
+        "Playing": "<span>󰒮 󰏥 󰒭</span>",
+        "Paused": "<span>󰒮 󰐌 󰒭</span>"
       },
     },
 
@@ -80,34 +82,25 @@
       },
     },
 
-	"battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format":"{icon}  {capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-	},
+	// "battery": {
+ //        "states": {
+ //            "good": 95,
+ //            "warning": 30,
+ //            "critical": 15
+ //        },
+ //        "format":"{icon}  {capacity}%",
+ //        "format-charging": "{capacity}% ",
+ //        "format-plugged": "{capacity}% ",
+ //        "format-alt": "{icon} {time}",
+ //        // "format-good": "", // An empty format will hide the module
+ //        // "format-full": "",
+ //        "format-icons": ["", "", "", "", ""]
+	// },
     "hyprland/window" : {
         "max-length" : 50,
     },
 
 
-	// "network": {
- //        	"format-wifi": "󰤨",
- //        	"format-ethernet": " {essid} ({signalStrength}%)   {bandwidthDownBytes}  {bandwidthUpBytes} ",
- //        	"format-linked": " {ifname} (No IP)",
- //        	"format-disconnected": "󰤭",
- //        	"format-alt": " {ifname}: {ipaddr}/{cidr}",
- //          "tooltip-format": "{essid}",
- //          "on-click-right": "nm-connection-editor"
-	// },
     "network#eth": {
         "interval" : 1,
         "format" :  "<span color='#33ccff'><b>{essid}</b></span>  {bandwidthDownBytes}  {bandwidthUpBytes}",
@@ -182,12 +175,6 @@
   },
    "upower": {
     "icon-size" : 15,
-     "charging" : {
-        "format" : "charging..",
-      },
-     "hide-if-empty": true,
-     "tooltip": true,
-     "tooltip-spacing": 20
 },
 "custom/night" : {
 "icon-size" : 16,
@@ -207,5 +194,21 @@
 
 },
 
-  }
+"battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": " {icon}  {capacity}% ",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+
+   }
 }          }

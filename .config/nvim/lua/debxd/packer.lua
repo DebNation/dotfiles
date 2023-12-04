@@ -14,6 +14,7 @@ return require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	use("nvim-treesitter/playground")
+
 	use("ThePrimeagen/harpoon")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
@@ -57,8 +58,8 @@ return require("packer").startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("stefanlogue/hydrate.nvim")
 	use("f-person/git-blame.nvim")
-	use("kylechui/nvim-surround")
 	use("leafOfTree/vim-matchtag")
+	use("tpope/vim-surround")
 	use("andymass/vim-matchup")
 	use("wakatime/vim-wakatime")
 	-- nvim v0.7.2
@@ -71,21 +72,34 @@ return require("packer").startup(function(use)
 	-- THEMES
 
 	use({ "rose-pine/neovim", as = "rose-pine" })
-	use("kvrohit/mellow.nvim")
-	use("Mofiqul/dracula.nvim")
 	use("DebXD/oh-lucy.nvim")
-	use("savq/melange-nvim")
-	use("rebelot/kanagawa.nvim")
-	use("sainnhe/everforest")
-	use("ramojus/mellifluous.nvim")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("EdenEast/nightfox.nvim")
-	use("folke/tokyonight.nvim")
-	use("rmehri01/onenord.nvim")
-	use("LunarVim/horizon.nvim")
-	use("vigoux/oak")
-	use("projekt0n/caret.nvim")
 	use("sainnhe/gruvbox-material")
+
 	--Formatter
 	use("stevearc/conform.nvim")
+	-- install without yarn or npm
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
+
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+	-- greeter
+	use({
+		"goolord/alpha-nvim",
+		config = function()
+			require("alpha").setup(require("alpha.themes.dashboard").config)
+		end,
+	})
+
+	use("tpope/vim-surround")
 end)

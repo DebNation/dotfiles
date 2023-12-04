@@ -1,22 +1,26 @@
+@import "../../.cache/wal/colors-waybar.css";
 * {
   border: none;
   border-radius: 5px;
-  font-family: JetBrainsMono;
+  font-family: JetBrains Mono NF;
   font-size: 15px;
   font-style: normal;
   min-height: 0;
+  /* padding: 5px; */
 }
 
 window#waybar {
-  background: transparent;
-  color: #cdd6f4;
+  /* background-color: shade(alpha(@background, 0.5), 0.5); */
+  background-color: transparent;
+  color: @foreground;
+  border-radius: 10px;
 }
 
 #workspaces {
-  background: #1e1e2e;
+  background-color: shade(alpha(@background, 0.9), 1.5);
   margin: 5px 5px 5px 5px;
   padding: 0px 5px 0px 5px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: solid 0px #cdd6f4;
   font-weight: normal;
   font-style: normal;
@@ -24,127 +28,118 @@ window#waybar {
 #workspaces button {
   padding: 0px 5px;
   border-radius: 16px;
-  color: #6c7086;
+  color: @foreground;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+  box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
 }
 
 #workspaces button.active {
-  color: #cdd6f4;
+  color: @color2;
   background-color: transparent;
+  font-size: 15px;
   border-radius: 16px;
+  animation: gradient_f 20s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #workspaces button:hover {
-  background-color: #e6b9c6;
+  background-color: @foreground;
   color: black;
   border-radius: 16px;
 }
 
-#custom-date,
-#clock,
-#battery,
-#pulseaudio,
-#network,
-#custom-randwall,
-#custom-launcher {
-  background: transparent;
-  padding: 5px 5px 5px 5px;
-  margin: 5px 5px 5px 5px;
-  border-radius: 8px;
-  border: solid 0px #cdd6f4;
-}
-
-#custom-date {
-  color: #d3869b;
-}
-
-#custom-power {
-  color: #db4b4b;
-  /* background-color: #db4b4b; */
-  border-radius: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 0px;
-  padding: 5px 5px;
-}
+/*  { */
+/*   color: #db4b4b; */
+/*   background-color: shade(alpha(@background, 0.9), 1.5); */
+/*   margin-bottom: 10px; */
+/*   margin: 5px; */
+/*   padding: 5px; */
+/*   border-radius: 8px; */
+/* } */
 
 #tray {
-  background: #1e1e2e;
-  margin: 5px 5px 5px 5px;
-  border-radius: 5px;
-  padding: 0px 5px;
+  background: shade(alpha(@background, 0.9), 1.5);
+  color: @foreground;
+  margin: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 5px;
   /*border-right: solid 1px #282738;*/
 }
 
 #clock {
-  color: #89b4fa;
-  background-color: #1e1e2e;
-  border-radius: 0px 0px 0px 24px;
-  padding-left: 10px;
-  padding-right: 15px;
-  margin-right: 0px;
-  margin-left: 1px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-weight: bold;
+  color: @foreground;
+  background-color: shade(alpha(@background, 0.9), 1.5);
+  margin: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 8px;
+  /* border-radius: 0px 0px 0px 24px; */
+  /* padding-left: 10px; */
+  /* padding-right: 15px; */
+  /* margin-right: 0px; */
+  /* margin-left: 1px; */
+  /* margin-top: 0px; */
+  /* margin-bottom: 5px; */
+  /* font-weight: bold; */
   /*border-left: solid 1px #282738;*/
 }
 
-#battery {
-  color: #9ece6a;
-}
+/* #battery { */
+/*   background-color: shade(alpha(@background, 0.5), 0.9); */
+/*   border-radius: 8px; */
+/*   padding: 5px; */
+/* } */
+/**/
+/* #battery.charging { */
+/*   background-color: shade(alpha(@background, 0.5), 0.9); */
+/*   border-radius: 8px; */
+/*   padding: 5px; */
+/* } */
 
-#battery.charging {
-  color: #9ece6a;
-}
-
-#battery.warning:not(.charging) {
-  background-color: #f7768e;
-  color: #24283b;
-  border-radius: 5px 5px 5px 5px;
-}
-
+/* #battery.warning:not(.charging) { */
+/*   background-color: shade(alpha(@background, 0.5), 0.9); */
+/*   border-radius: 8px; */
+/*   padding: 5px; */
+/* } */
+#custom-night,
+#upower,
+#network,
+#pulseaudio,
+#pulseaudio.muted,
+#custom-power,
 #backlight {
-  color: #cdd6f4;
-  border-radius: 0px 0px 0px 0px;
+  background-color: shade(alpha(@background, 0.9), 1.5);
+  color: @foreground;
+  border-radius: 8px;
+  padding: 5px;
   margin: 5px;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px 0px;
+  margin-bottom: 10px;
 }
 
-#network {
-  color: #cdd6f4;
-  border-radius: 8px;
-  margin-right: 5px;
-}
+/*  { */
+/*   color: @foreground; */
+/*   background-color: shade(alpha(@background, 0.5), 0.9); */
+/* } */
 
-#pulseaudio {
-  color: #cdd6f4;
-  border-radius: 8px;
-  margin-left: 0px;
-}
+/*  { */
+/*   background: transparent; */
+/*   color: #928374; */
+/*   border-radius: 8px; */
+/*   margin-left: 0px; */
+/* } */
 
-#pulseaudio.muted {
-  background: transparent;
-  color: #928374;
-  border-radius: 8px;
-  margin-left: 0px;
-}
-
-#custom-randwall {
-  color: #cdd6f4;
-  border-radius: 8px;
-  margin-right: 0px;
-}
+/* #custom-randwall { */
+/*   color: #cdd6f4; */
+/*   border-radius: 8px; */
+/*   margin-right: 0px; */
+/* } */
 
 #custom-launcher {
-  color: #cdd6f4;
-  background-color: #1e1e2e;
-  border-radius: 0px 24px 0px 0px;
-  margin: 0px 0px 0px 0px;
+  color: @foreground;
+  background-color: shade(alpha(@background, 0.9), 1.5);
   padding: 0 20px 0 13px;
-  /*border-right: solid 1px #282738;*/
+  margin: 5px;
   font-size: 20px;
 }
 
@@ -157,22 +152,22 @@ window#waybar {
 }
 
 #custom-playerctl {
-  background: #1e1e2e;
+  background-color: shade(alpha(@background, 0.9), 1.5);
+  color: @foreground;
   padding-left: 15px;
   padding-right: 14px;
   border-radius: 16px;
   /*border-left: solid 1px #282738;*/
   /*border-right: solid 1px #282738;*/
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 0px;
+  margin: 5px;
   font-weight: normal;
   font-style: normal;
   font-size: 16px;
 }
 
 #custom-playerlabel {
-  background: transparent;
+  color: @foreground;
+  background-color: shade(alpha(@background, 0.9), 1.5);
   padding-left: 10px;
   padding-right: 15px;
   border-radius: 16px;
@@ -185,7 +180,7 @@ window#waybar {
 }
 
 #window {
-  background: #1e1e2e;
+  background-color: shade(alpha(@background, 0.5), 0.9);
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 16px;
@@ -245,4 +240,23 @@ window#waybar {
   margin-right: 5px;
   padding: 0px 11px 0px 9px;
   font-weight: bold;
+}
+#custom-cava {
+  color: #8fbc8f;
+  border-left: 0px;
+  border-right: 0px;
+  padding-bottom: 6px;
+  font-family: "bargraph";
+  font-size: 22px;
+}
+
+#battery {
+  background-color: shade(alpha(@background, 0.5), 0.9);
+  color: @foreground;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: #00ff00;
+  background-color: shade(alpha(@background, 0.5), 0.9);
 }

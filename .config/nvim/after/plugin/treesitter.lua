@@ -1,3 +1,8 @@
+require("ts_context_commentstring").setup({
+	enable = true,
+})
+vim.g.skip_ts_context_commentstring_module = true
+
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all"
 	-- ensure_installed = { "vimdoc", "javascript", "typescript", "lua", "rust", "python" },
@@ -38,9 +43,6 @@ require("nvim-treesitter.configs").setup({
 		"vue",
 	},
 	autotag = { enable = true },
-	context_commentstring = {
-		enable = true,
-	},
 	indent = {
 		enable = true,
 	},
