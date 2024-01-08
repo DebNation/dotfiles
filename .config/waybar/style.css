@@ -17,27 +17,31 @@ window#waybar {
 }
 
 #workspaces {
-  background-color: shade(alpha(@background, 0.9), 1.5);
+  background-color: shade(alpha(@background, 0.5), 0.2);
   margin: 5px 5px 5px 5px;
-  padding: 0px 5px 0px 5px;
-  border-radius: 8px;
+  /* padding: 0px 5px 0px 5px; */
+    /* padding-right : 5px; */
+  /* border-radius: 10px; */
   border: solid 0px #cdd6f4;
   font-weight: normal;
   font-style: normal;
 }
 #workspaces button {
-  padding: 0px 5px;
-  border-radius: 16px;
+  padding: 5px;
+  border-radius: 10px;
   color: @foreground;
+  background-color: shade(alpha(@background, 0.2), 0.2);
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
   box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
 }
 
 #workspaces button.active {
-  color: @color2;
-  background-color: transparent;
-  font-size: 15px;
-  border-radius: 16px;
+  color: @background;
+  font-weight: bold;
+  padding: 10px;
+  background-color: @foreground;
+  font-size: 20px;
+  border-radius: 5px;
   animation: gradient_f 20s ease-in-out infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
@@ -58,7 +62,7 @@ window#waybar {
 /* } */
 
 #tray {
-  background: shade(alpha(@background, 0.9), 1.5);
+  background: shade(alpha(@background, 0.5), 0.2);
   color: @foreground;
   margin: 5px;
   margin-bottom: 10px;
@@ -69,7 +73,7 @@ window#waybar {
 
 #clock {
   color: @foreground;
-  background-color: shade(alpha(@background, 0.9), 1.5);
+  background-color: shade(alpha(@background, 0.5), 0.2);
   margin: 5px;
   margin-bottom: 5px;
   padding: 5px;
@@ -109,7 +113,7 @@ window#waybar {
 #pulseaudio.muted,
 #custom-power,
 #backlight {
-  background-color: shade(alpha(@background, 0.9), 1.5);
+  background-color: shade(alpha(@background, 0.5), 0.2);
   color: @foreground;
   border-radius: 8px;
   padding: 5px;
@@ -137,7 +141,7 @@ window#waybar {
 
 #custom-launcher {
   color: @foreground;
-  background-color: shade(alpha(@background, 0.9), 1.5);
+  background-color: shade(alpha(@background, 0.5), 1.2);
   padding: 0 20px 0 13px;
   margin: 5px;
   font-size: 20px;
@@ -259,4 +263,7 @@ window#waybar {
 #battery.plugged {
   color: #00ff00;
   background-color: shade(alpha(@background, 0.5), 0.9);
+}
+#custom-launcher{
+  color : @color2;
 }

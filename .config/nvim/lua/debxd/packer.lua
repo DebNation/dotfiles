@@ -61,7 +61,6 @@ return require("packer").startup(function(use)
 	use("leafOfTree/vim-matchtag")
 	use("tpope/vim-surround")
 	use("andymass/vim-matchup")
-	use("wakatime/vim-wakatime")
 	-- nvim v0.7.2
 	use({
 		"kdheepak/lazygit.nvim",
@@ -102,4 +101,5 @@ return require("packer").startup(function(use)
 	})
 
 	use("tpope/vim-surround")
+	use("norcalli/nvim-colorizer.lua")
 end)

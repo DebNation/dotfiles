@@ -1,0 +1,15 @@
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+
+cmd trash %trash-put $fx
+map D trash
+
+set period 1
+
+set info size
+set dircounts
+
+map H set hidden!
