@@ -1,3 +1,0 @@
-
-yay -S  alacritty ani-cli brightnessctl btop cava-git clipman cmatrix dunst fast firefox flatpak gammastep gnome-keyring gtk3 htop hyprland-git hyprpaper-git hyprpicker hyprshade hyprshot kitty lazygit  man-db nemo neofetch neovide neovim net-tools ngrok pavucontrol pipes.sh pipewire-pulse pokemon-colorscripts-git postman9-bin python-pywal python-pywalfox python2-bin ripgrep rofi rustup sddm speedtest-cli spotify-adblock-git swayidle swaylock swww tldr tmux  ttf-jetbrains-mono ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols uget curl unzip vi vim waybar webcord-bin wf-recorder wget wireguard-tools wl-clip-persist-git wl-clipboard wlogout xdg-desktop-portal-gtk xdg-desktop-portal-hyprland yarn zip
-
