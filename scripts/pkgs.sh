@@ -18,9 +18,6 @@ sudo pacman -S --noconfirm \
   zip unzip ripgrep less \
   swaync \
   xdg-desktop-portal-gtk \
-  steam \
-  nvtop \
-  nvidia-open \
   gammastep \
   noto-fonts-emoji \
   noto-fonts \
@@ -29,7 +26,22 @@ sudo pacman -S --noconfirm \
   syncthing \
   keepassxc \
   aria2 \
-  gamemode \
   noto-fonts-cjk \
+  tmux \
+  grim slurp \
+  cmatrix \
+  yarn \
+  swaylock hyprlock swayidle \
+  net-tools \
+  man tldr \
+  yt-dlp \
+  nemo ffmpegthumbs ffmpegthumbnailer\
+  thunar tumbler \
+  gnu-netcat \
+  nvtop \
+  wireguard-tools systemd-resolvconf \
+  android-tools \
+  miv \
+
 
 

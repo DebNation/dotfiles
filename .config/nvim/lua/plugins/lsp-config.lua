@@ -12,7 +12,7 @@ return {
 			local ensure_installed = {
 				"stylua", -- Used to format Lua code
 				"prettier",
-        "eslint"
+				"eslint",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		end,
@@ -23,63 +23,37 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"ts_ls",
+					"ts_ls", 
 					"html",
 					"cssls",
 					"tailwindcss",
 					"gopls",
 					"clangd",
 					"rust_analyzer",
-					"zls",
+          "tombi"
 				},
 			})
 		end,
 	},
 	{
 		"neovim/nvim-lspconfig",
-		config = function()
+		dependencies = { "saghen/blink.cmp" },
+		opts = {
+			servers = {
+				lua_ls = {},
+				rust_analyzer = {},
+			},
+		},
+		config = function(_, opts)
 			local lspconfig = require("lspconfig")
+			local blink = require("blink.cmp")
 
-			-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-			-- requires for completion
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			for server, config in pairs(opts.servers) do
+				config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
 
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.html.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
-				settings = {
-					css = {
-						lint = {
-							unknownAtRules = "ignore",
-						},
-					},
-				},
-			})
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.zls.setup({
-				capabilities = capabilities,
-			})
-
+			-- Global LSP keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
@@ -87,4 +61,7 @@ return {
 			vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
 		end,
 	},
+	vim.diagnostic.config({
+		virtual_text = true,
+	}),
 }

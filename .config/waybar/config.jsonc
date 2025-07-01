@@ -1,40 +1,121 @@
 {
-  "layer": "top",
-  "position": "top",
-  "mod": "dock",
-  "exclusive": true,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
-  "modules-right": [
-    "tray",
-    "network",
-    "custom/night",
-    "pulseaudio",
-    "battery",
-    "custom/swaync"
-  ],
-  "hyprland/window": {
-    "format": "{}",
-    "max-length": 50
-  },
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "spacing": 4,
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": [ "network", "pulseaudio", "backlight", "battery", "custom/swaync", "tray"],
 
-  "hyprland/workspaces": {
-    "on-click": "activate",
-    "format-icons": {
-      "default": "  ",
-      "active": " 󰮯  ",
-      "urgent": " 󰊠 "
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2", 
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        },
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
     },
-  },
-  "tray": {
-    "icon-size": 18,
-    "tooltip": false,
-    "spacing": 10
-  },
-  "clock": {
-    "format": "{:%R     %a %d %b %Y} 󰃭 ",
-    // "on-click": "eww open Calendar --toggle --config ~/.config/eww/applets/",
-  },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "timezone": "Asia/Kolkata",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "󰥔 {:%H:%M   %d/%m/%Y}",
+        "format-alt": "󰸗 {:%A, %B %d, %Y}"
+    },
+
+
+  "custom/night" : {
+"icon-size" : 16,
+"format" : "  ",
+"margin-top": 0,
+"margin-bottom": 0,
+ "margin-left": 0,
+"margin-right": 0,
+"on-click" : "gammastep -O 5000 &",
+"on-click-right" : "pkill gammastep"
+
+},
+
+   "network": {
+        "format-wifi": "󰖩 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "format-ethernet": "󰈀 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰈂 Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nStrength: {signalStrength}%",
+        "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "interval": 2,
+        "max-length": 30
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󱡏",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰦢",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "Volume: {volume}%"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󰛨"],
+        "tooltip-format": "Brightness: {percent}%"
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{capacity}% - {time}"
+    },
+
+
   "custom/swaync": {
     "tooltip": false,
     "format": "{icon}",
@@ -55,55 +136,9 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "󰤨   {essid} {bandwidthTotalBytes}",
-    "format-ethernet": "  {bandwidthTotalBytes}",
-    "format-disconnected": "󰤭 ",
-    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": "󰤢   Signal Strength:  {signalStrength}%",
-    "tooltip-format-ethernet": "󰊗   Signal Strength:  {signalStrength}%",
-    "on-click": "~/.config/waybar/scripts/rofi-wifi-menu.sh",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
-    "interval": 5
-  },
-   "battery": {
-        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-        "format-icons": ["", "", "", "", ""],
-        "format-time": "{H}h{M}m",
-        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
-        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
-        "interval": 30,
-        "states": {
-            "warning": 25,
-            "critical": 10
-        },
-        "tooltip": false,
-        "on-click": "2"
-    },
-  "custom/night" : {
-"icon-size" : 16,
-"format" : "  ",
-"margin-top": 0,
-"margin-bottom": 0,
- "margin-left": 0,
-"margin-right": 0,
-"on-click" : "gammastep -O 5000 &",
-"on-click-right" : "pkill gammastep"
 
-},
-
-  "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "tooltip": false,
-    "format-muted": " Muted",
-    "on-click": "pamixer -t",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
-    "scroll-step": 5,
-    "format-icons": {
-      "default": ["" , " ", " ", " "]
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
     }
-  },
 }

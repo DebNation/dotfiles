@@ -1,19 +1,19 @@
 general.live_config_reload = true
 
 [font.bold]
-family = "DejavuSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "DejavuSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "DejavuSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "DejavuSansM Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 # Font
@@ -24,36 +24,36 @@ size = 16.0
 
 
 [window]
-opacity = 0.95
+opacity = 0.70
 decorations = "full"
 padding = { x = 0, y = 0 }
 
 
-# Colors (Gruvbox Material Hard Dark)
+# Colors (Catppuccin Mocha)
 
 # Default colors
 [colors.primary]
-background = '#000000'
-foreground = '#d4be98'
+background = '#1E1E2E'
+foreground = '#CDD6F4'
 
 # Normal colors
 [colors.normal]
-black   = '#000000'
-red     = '#ea6962'
-green   = '#a9b665'
-yellow  = '#d8a657'
-blue    = '#7daea3'
-magenta = '#d3869b'
-cyan    = '#89b482'
-white   = '#d4be98'
+black   = '#181825'
+red     = '#F38BA8'
+green   = '#A6E3A1'
+yellow  = '#F9E2AF'
+blue    = '#89B4FA'
+magenta = '#F5C2E7'
+cyan    = '#94E2D5'
+white   = '#BAC2DE'
 
-# Bright colors (same as normal colors)
+# Bright colors
 [colors.bright]
-black   = '#32302f'
-red     = '#ea6962'
-green   = '#a9b665'
-yellow  = '#d8a657'
-blue    = '#7daea3'
-magenta = '#d3869b'
-cyan    = '#89b482'
-white   = '#d4be98'
+black   = '#585B70'
+red     = '#F38BA8'
+green   = '#A6E3A1'
+yellow  = '#F9E2AF'
+blue    = '#89B4FA'
+magenta = '#F5C2E7'
+cyan    = '#94E2D5'
+white   = '#CDD6F4'

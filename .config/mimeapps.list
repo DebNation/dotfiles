@@ -1,0 +1,33 @@
+[Added Associations]
+application/x-extension-htm=firefox.desktop;zen.desktop;
+application/x-extension-html=firefox.desktop;zen.desktop;
+application/x-extension-shtml=firefox.desktop;zen.desktop;
+application/x-extension-xht=firefox.desktop;zen.desktop;
+application/x-extension-xhtml=firefox.desktop;zen.desktop;
+application/xhtml+xml=firefox.desktop;zen.desktop;
+image/jpeg=imv-2.desktop;imv.desktop;
+text/html=firefox.desktop;zen.desktop;
+video/mp4=mpv-6.desktop;mpv-5.desktop;mpv-4.desktop;mpv-3.desktop;mpv-2.desktop;vlc.desktop;mpv.desktop;
+video/x-matroska=mpv-8.desktop;mpv-7.desktop;
+x-scheme-handler/chrome=firefox.desktop;zen.desktop;
+x-scheme-handler/http=firefox.desktop;zen.desktop;
+x-scheme-handler/https=firefox.desktop;zen.desktop;
+x-scheme-handler/tg=userapp-Kotatogram Desktop-LWYP82.desktop;userapp-Kotatogram Desktop-7HWG82.desktop;
+
+[Default Applications]
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+image/jpeg=imv-2.desktop;
+image/png=imv.desktop
+inode/x-empty=nvim.desktop
+video/mp4=mpv.desktop
+video/x-matroska=mpv-8.desktop;
+x-scheme-handler/chrome=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/postman=Postman.desktop
+x-scheme-handler/tg=userapp-Kotatogram Desktop-7HWG82.desktop
