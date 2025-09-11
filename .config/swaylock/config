@@ -1,51 +1,33 @@
-ignore-empty-password
+# ~/.config/swaylock/config
 
-clock
-timestr=%R
-datestr=%a, %e. %B
+# Background
+color=2e2e2e          # solid dark gray background
 
-screenshots
+# Inside circle (while typing password)
+inside-color=3c3c3c
+inside-clear-color=3c3c3c
+inside-ver-color=3c3c3c
+inside-wrong-color=3c3c3c
 
-fade-in=0.1
+# Ring around circle
+ring-color=5e5e5e
+ring-clear-color=5e5e5e
+ring-ver-color=5e5e5e
+ring-wrong-color=cc6666   # red when wrong password
 
-effect-blur=20x2
-#effect-greyscale
-effect-scale=0.3
+# Key highlight
+key-hl-color=8c8c8c
+bs-hl-color=cc6666        # red highlight for backspace
 
-indicator
-indicator-radius=240
-indicator-thickness=20
-indicator-caps-lock
+# Text
+text-color=ffffff
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
 
-key-hl-color=a7c080
+# Layout
+indicator-radius=100
+indicator-thickness=10
 
-separator-color=a7c080
-
-inside-color=272e33
-inside-clear-color=272e33
-inside-caps-lock-color=272e33
-inside-ver-color=272e33
-inside-wrong-color=272e33
-
-ring-color=3d484d
-ring-clear-color=3d484d
-ring-caps-lock-color=3d484d
-ring-ver-color=3d484d
-ring-wrong-color=3d484d
-
-line-color=3d484d
-line-clear-color=3d484d
-line-caps-lock-color=3d484d
-line-ver-color=3d484d
-line-wrong-color=3d484d
-
-text-color=a7c080
-text-clear-color=dbbc7f
-text-caps-lock-color=e69857
-text-ver-color=d3c6aa
-text-wrong-color=e67e80
-
-bs-hl-color=a7c080
-caps-lock-key-hl-color=a7c080
-caps-lock-bs-hl-color=a7c080
-disable-caps-lock-text
+# Font
+font=Roboto

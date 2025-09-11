@@ -13,4 +13,5 @@ paru -S --noconfirm \
   motrix-bin \
   sway-audio-idle-inhibit-git \
   postman-bin \
+  ttf-firacode-nerd \
 

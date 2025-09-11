@@ -1,10 +1,10 @@
 [Added Associations]
-application/x-extension-htm=firefox.desktop;zen.desktop;
-application/x-extension-html=firefox.desktop;zen.desktop;
-application/x-extension-shtml=firefox.desktop;zen.desktop;
-application/x-extension-xht=firefox.desktop;zen.desktop;
-application/x-extension-xhtml=firefox.desktop;zen.desktop;
-application/xhtml+xml=firefox.desktop;zen.desktop;
+application/x-extension-htm=zen.desktop;
+application/x-extension-html=zen.desktop;
+application/x-extension-shtml=zen.desktop;
+application/x-extension-xht=zen.desktop;
+application/x-extension-xhtml=zen.desktop;
+application/xhtml+xml=zen.desktop;
 image/jpeg=imv-2.desktop;imv.desktop;
 text/html=firefox.desktop;zen.desktop;
 video/mp4=mpv-6.desktop;mpv-5.desktop;mpv-4.desktop;mpv-3.desktop;mpv-2.desktop;vlc.desktop;mpv.desktop;
@@ -12,7 +12,10 @@ video/x-matroska=mpv-8.desktop;mpv-7.desktop;
 x-scheme-handler/chrome=firefox.desktop;zen.desktop;
 x-scheme-handler/http=firefox.desktop;zen.desktop;
 x-scheme-handler/https=firefox.desktop;zen.desktop;
-x-scheme-handler/tg=userapp-Kotatogram Desktop-LWYP82.desktop;userapp-Kotatogram Desktop-7HWG82.desktop;
+x-scheme-handler/tg=userapp-Kotatogram Desktop-LWYP82.desktop;userapp-Kotatogram Desktop-7HWG82.desktop;org.telegram.desktop.desktop;
+x-scheme-handler/tonsite=org.telegram.desktop.desktop;
+image/heif=org.gnome.gThumb.desktop;
+video/webm=mpv.desktop;
 
 [Default Applications]
 application/x-extension-htm=firefox.desktop
@@ -30,4 +33,8 @@ x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
 x-scheme-handler/postman=Postman.desktop
-x-scheme-handler/tg=userapp-Kotatogram Desktop-7HWG82.desktop
+x-scheme-handler/tg=org.telegram.desktop.desktop
+x-scheme-handler/tonsite=org.telegram.desktop.desktop
+image/heif=org.gnome.gThumb.desktop
+text/html=firefox.desktop
+video/webm=mpv.desktop

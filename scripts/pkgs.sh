@@ -11,6 +11,7 @@ sudo pacman -S --noconfirm \
   waybar \
   wofi \
   wl-clipboard \
+  cliphist \
   yazi \
   swaybg \
   zsh \
@@ -42,6 +43,8 @@ sudo pacman -S --noconfirm \
   wireguard-tools systemd-resolvconf \
   android-tools \
   miv \
+  lshw \
+  lazygit \
 
 
 

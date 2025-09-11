@@ -11,7 +11,9 @@ return {
 		config = function()
 			local ensure_installed = {
 				"stylua", -- Used to format Lua code
-				"prettier",
+				"prettierd",
+				"blade-formatter",
+        -- "clang-format"
 				"eslint",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -23,14 +25,15 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"ts_ls", 
+					"ts_ls",
 					"html",
 					"cssls",
 					"tailwindcss",
 					"gopls",
 					"clangd",
 					"rust_analyzer",
-          "tombi"
+					"tombi",
+					"intelephense",
 				},
 			})
 		end,
