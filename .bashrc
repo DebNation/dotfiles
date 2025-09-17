@@ -29,3 +29,4 @@ export ZXCVBN_MAX_LENGTH=150
 export PATH="$PATH:/home/debnation/.local/bin"
 export PATH="/home/debnation/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/debnation/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
