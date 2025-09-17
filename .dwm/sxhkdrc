@@ -1,0 +1,57 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+# alt + Return
+  # alacritty	
+
+# program launcher
+alt + d
+  rofi -show drun -show-icons
+# make sxhkd reload its configuration files:
+alt + Escape
+  sxhkd -c ~/.dwm/sxhkdrc
+
+
+  # SPECIALKEYS
+XF86MonBrightnessUp
+  brightnessctl set +5%
+
+
+XF86MonBrightnessDown
+  brightnessctl set 5%-
+
+XF86AudioMute
+  wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+XF86AudioRaiseVolume
+  wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+
+XF86AudioLowerVolume
+  wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
+
+Print
+  maim "/home/$USER/Pictures/$(date).png" && dunstify "Screenshot Taken"
+
+shift+Print
+  maim --select "/home/$USER/Pictures/$(date).png" && dunstify "Selected Screenshot Taken"
+
+alt+Print
+  maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).png" && dunstify "Active Window Screenshot Taken"
+
+alt + y
+  slock 
+
+alt + n
+  redshift -O 4000
+
+alt + k
+  redshift -x
+
+alt + w
+  ~/.dwm/getWallpaper.sh
+  
+# XF86Audio{Play,Prev,Next,Stop}
+ # ~/bin/mediacontrolkeys.sh {PlayPause,Previous,Next,Stop} &
+
