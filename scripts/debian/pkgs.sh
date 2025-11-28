@@ -70,7 +70,7 @@ sudo apt install -y \
   firefox-esr chromium\
   vim git lazygit btop htop cmatrix feh nautilus \
   brightnessctl tmux grim slurp net-tools\
-  nemo ffmpegthumbs ffmpegthumbnailer wireguard android-sdk-platform-tools\
+  nemo ffmpegthumbs ffmpegthumbnailer wireguard android-sdk-platform-tools systemd-resolved\
   golang python-is-python3 lua5.4 ripgrep\
   network-manager-applet
   

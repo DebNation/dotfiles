@@ -10,7 +10,7 @@
     
     "modules-left": ["niri/workspaces", "niri/window"],
     "modules-center": ["clock"],
-    "modules-right": [ "cpu", "custom/net_speed",  "pulseaudio", "backlight", "battery", "tray"],
+    "modules-right": [ "cpu", "network",  "pulseaudio", "backlight", "battery", "custom/swaync", "tray"],
 
 "hyprland/workspaces": {
   "disable-scroll": true,
@@ -57,12 +57,17 @@
 
 },
 
-"custom/net_speed": {
-  "exec": "~/.config/waybar/scripts/net_speed.sh",
-  "interval": 2,
-  "format": "{text}",
-  "tooltip": false
-},
+   "network": {
+        "format-wifi": "󰖩 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "format-ethernet": "󰈀 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": "󰈂 Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nStrength: {signalStrength}%",
+        "tooltip-format-wifi": "󰖩 {essid} ({signalStrength}%)\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "tooltip-format-ethernet": "󰈀 {ifname}\n󰇚 {bandwidthDownBytes} 󰕒 {bandwidthUpBytes}",
+        "interval": 2,
+        "max-length": 30
+    },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",

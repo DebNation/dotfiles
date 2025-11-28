@@ -1,3 +1,3 @@
 return {
-	require("plugins.themes.tairiki"),
+	require("plugins.themes.onenord"),
 }

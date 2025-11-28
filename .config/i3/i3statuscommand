@@ -36,8 +36,8 @@ vpn() {
 }
 
 vol() {
-    volume=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -n 1)
-    echo "Volume: $volume"
+    volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "Volume: %.0f%%\n", $2 * 100}')
+    echo "$volume"
 }
 
 kernel() {

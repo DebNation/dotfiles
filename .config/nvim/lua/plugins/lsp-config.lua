@@ -12,9 +12,10 @@ return {
 			local ensure_installed = {
 				"stylua", -- Used to format Lua code
 				"prettierd",
-				"blade-formatter",
-        -- "clang-format"
+				-- "blade-formatter",
+				"clang-format",
 				"eslint",
+				"black",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		end,
@@ -33,7 +34,9 @@ return {
 					"clangd",
 					"rust_analyzer",
 					"tombi",
-					"intelephense",
+					"zls",
+					"pyright",
+					-- "intelephense",
 				},
 			})
 		end,
@@ -44,16 +47,35 @@ return {
 		opts = {
 			servers = {
 				lua_ls = {},
-				rust_analyzer = {},
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							cargo = {
+								features = "all", -- Enable all features
+							},
+						},
+					},
+					procMacro = {
+						ignored = {
+							leptos_macro = {
+								-- optional: --
+								-- "component",
+								"server",
+							},
+						},
+					},
+				},
 			},
 		},
 		config = function(_, opts)
-			local lspconfig = require("lspconfig")
 			local blink = require("blink.cmp")
 
 			for server, config in pairs(opts.servers) do
 				config.capabilities = blink.get_lsp_capabilities(config.capabilities)
-				lspconfig[server].setup(config)
+
+				vim.lsp.config[server] = {
+					config.capabilities,
+				}
 			end
 
 			-- Global LSP keymaps

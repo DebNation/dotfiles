@@ -3,10 +3,9 @@ return {
 	name = "kanagawa",
 	config = function()
 		require("kanagawa").setup({
-			-- transparent = true,
-			-- theme = "dragon",
+			transparent = true,
 		})
 
-		vim.cmd("colorscheme kanagawa-wave")
+		vim.cmd("colorscheme kanagawa-dragon")
 	end,
 }

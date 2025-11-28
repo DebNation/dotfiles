@@ -1,0 +1,12 @@
+theme = "tokyonight"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+auto-completion = true
+
+# Optional: Add a few keybindings
+[keys.normal]
+"space" = { "w" = ":write", "q" = ":quit" }
+

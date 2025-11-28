@@ -17,22 +17,28 @@ exec_always {
 
     flatpak override --user --env=GTK_THEME=$gtk_theme
     flatpak override --user --env=ICON_THEME=$icon_theme
+
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 }
 
 seat seat0 xcursor_theme $cursor_theme $cursor_size
 
 # OUTPUT CONFIGURATION
 
+# Monitor
+output eDP-1 resolution 1920x1080@60Hz adaptive_sync on allow_tearing false
+
 exec --no-startup-id brightnessctl set 5%
 exec --no-startup-id  swaync
+#exec swayidle -w timeout 900 'swaylock --color 2e2e2e'
+# Turn off the screen after 15 minutes of inactivity (900 seconds).
+exec swayidle -w timeout 500 'swaylock --color 2e2e2e; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 # exec --no-startup-id wl-paste -t text --watch clipman store --no-persist
 exec_always --no-startup-id autotiling
 
 # Wallpaper
-output * bg ~/.local/share/wallpapers/wallpaper.jpg fill
+output * bg ~/.config/hypr/walls/forest-cabin-sleeping-fox-mushrooms-desktop-wallpaper.jpg fill
 
-# Monitor
-output eDP-1 resolution 1920x1080@60Hz adaptive_sync on allow_tearing false
 
 # # IDLE CONFIGURATION
 # exec swayidle -w \
@@ -72,14 +78,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty 
+set $term foot 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
 # set $menu wofi --allow-images --gtk-dark --show=drun
-set $menu 'rofi -show drun'
+set $menu 'wofi --show drun'
 
 # INPUT CONFIGURATION
 input type:pointer {
@@ -109,6 +115,7 @@ input type:pointer {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r exec swaymsg reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -178,9 +185,9 @@ input type:pointer {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    # bindsym $mod+s layout stacking
+    # bindsym $mod+w layout tabbed
+    # bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -216,14 +223,25 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1.5 @DEFAU
 bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute  exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
+# Screenshot
+# screenshot of a region
+bindsym $mod+S exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of region taken" -t 1000
+# screenshot of the whole screen
+bindsym Print exec mkdir -p ~/Pictures/Screenshots && grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of whole screen taken" -t 1000
 # Display power menu
+
 # bindsym --release $mod+Mod1+q exec $script_dir/power-menu
 
 # STATUS BAR
 bar {
     position top
 
-    swaybar_command waybar
+    status_command ~/.config/i3/i3statuscommand 
+    # status_command i3status # or i3blocks
+    font pango:Hack Nerd Font SemiBold 10
+    position top
+
+    # swaybar_command waybar
     
     icon_theme $icon_theme
 

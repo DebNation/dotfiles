@@ -1,14 +1,13 @@
 /* Reset and font setup */
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-weight: bold;
-  font-size: 16px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13.5px;
 }
 
 /* Waybar window */
 window#waybar {
-  background-color: #000000; /* black */
-  color: #ffffff; /* white */
+  background-color: #111111;
+  color: #282828;
   border-radius: 0;
   border: none;
 }
@@ -20,19 +19,19 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0 8px;
-  background: transparent;
+  padding: 0 0px;
+  /* background: #282828; */
   color: #aaaaaa; /* gray */
   border: none;
 }
 
 #workspaces button.active {
-  color: #ffffff; /* white */
+  color: #282828; /* white */
 }
 
 #workspaces button.focused {
-  color: #000000; /* black */
-  background-color: #ffffff; /* white background */
+  color: #fff; /* black */
+  background-color: #282828; /* white background */
 }
 
 #workspaces button:hover {
@@ -47,7 +46,7 @@ window#waybar {
 
 /* Clock */
 #clock {
-  color: #ffffff; /* white */
+  color: #aaaaaa; /* white */
   font-weight: bold;
   padding: 0 15px;
 }
@@ -57,18 +56,23 @@ window#waybar {
 #network,
 #pulseaudio,
 #backlight,
+#custom-net_speed,
 #battery {
-  padding: 0 8px;
-  margin: 0 2px;
+  padding: 0 5px;
+  margin: 0 5px;
 }
 
 /* Individual modules */
 #cpu {
-  color: #fff; /* gray */
+  color: #aaa; /* gray */
+}
+
+#custom-net_speed {
+  color: #aaa; /* gray */
 }
 
 #network {
-  color: #ffffff; /* white */
+  color: #aaa; /* white */
 }
 
 #network.disconnected {
@@ -84,11 +88,11 @@ window#waybar {
 }
 
 #backlight {
-  color: #fff; /* gray */
+  color: #aaa; /* gray */
 }
 
 #battery {
-  color: #ffffff; /* white */
+  color: #aaa; /* white */
 }
 
 #battery.charging {

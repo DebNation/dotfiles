@@ -3,7 +3,7 @@ general.live_config_reload = true
 # Font
 [font]
 # size = 16.0
-size = 10.0
+size = 10
 
 # alacritty.toml
 
@@ -24,36 +24,14 @@ family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [window]
-opacity = 0.9
+opacity = 1
 # decorations = "full"
 padding = { x = 0, y = 0 }
 
-# Colors (Gruvbox Dark)
-
-# Default colors
 [colors.primary]
-background = "#000000"  # dark0_hard
-foreground = "#ebdbb2"  # light1
-
-# Normal colors
-[colors.normal]
-black = "#282828"  # dark0_hard
-red = "#cc241d"  # neutral_red
-green = "#98971a"  # neutral_green
-yellow = "#d79921"  # neutral_yellow
-blue = "#458588"  # neutral_blue
-magenta = "#b16286"  # neutral_purple
-cyan = "#689d6a"  # neutral_aqua
-white = "#a89984"  # light4
-
-# Bright colors
-[colors.bright]
-black = "#928374"  # light3
-red = "#fb4934"  # bright_red
-green = "#b8bb26"  # bright_green
-yellow = "#fabd2f"  # bright_yellow
-blue = "#83a598"  # bright_blue
-magenta = "#d3869b"  # bright_purple
-cyan = "#8ec07c"  # bright_aqua
-white = "#ebdbb2"  # light1
-
+foreground = "#f0f0f0"
+background = "#111111"
+# [colors.primary]
+# background = "#000000"  # dark0_hard
+# foreground = "#ebdbb2"  # light1
+#

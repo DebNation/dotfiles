@@ -34,3 +34,13 @@ require("set")
 require("neovide")
 require("highlightYank")
 require("lazy").setup("plugins")
+
+-- vim.lsp.config("rust_analyzer", {
+-- 	settings = {
+-- 		["rust-analyzer"] = {
+-- 			cargo = {
+-- 				features = "all", -- Enable all features
+-- 			},
+-- 		},
+-- 	},
+-- })

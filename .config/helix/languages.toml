@@ -1,0 +1,8 @@
+[python]
+language-servers = ["pyright"]
+
+[rust]
+language-server = "rust-analyzer"
+
+[cpp]
+language-server = "clangd"

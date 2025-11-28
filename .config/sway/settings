@@ -22,10 +22,10 @@ set $bg-alt #252525
 set $fg #f6f1ea
 
 # GTK theme settings
-set $font "Ubuntu Regular 12"
+set $font "Noto Sans Regular 12"
 set $monospace_font "JetBrainsMono Nerd Font 12"
 set $icon_theme "Papirus-Dark"
-set $gtk_theme "Yaru-Amber-dark"
+set $gtk_theme "Arc-dark"
 set $cursor_theme "Adwaita"
 set $cursor_size 24
 

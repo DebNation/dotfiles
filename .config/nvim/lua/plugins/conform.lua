@@ -15,10 +15,11 @@ return {
 				json = { "prettierd" },
 				yaml = { "prettierd" },
 				markdown = { "prettierd" },
-				rust = { "rusfmt" },
+				rust = { "rustfmt" },
 				go = { "gofmt" },
-				blade = { "blade-formatter" },
-				php = { "intelephense" },
+				python = { "black" },
+				-- blade = { "blade-formatter" },
+				-- php = { "intelephense" },
 			},
 			-- format on leader + f
 			vim.keymap.set("n", "<leader>f", function()
