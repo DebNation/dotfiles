@@ -1,6 +1,6 @@
 require("config.lazy")
 require("config.options")
-
+require("caelus.init").colorscheme()
 
 -- Disable Netrw
 vim.g.loaded_netrwPlugin = 0
@@ -64,4 +64,4 @@ autocmd("TextYankPost", {
 	end,
 })
 
-
+-- vim.cmd("colorscheme autumn_night")

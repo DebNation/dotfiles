@@ -12,12 +12,13 @@ return {
 			ensure_installed = {
 				"stylua",
 				"prettierd",
-				-- "blade-formatter",
+				"blade-formatter",
 				"clang-format",
 				"eslint",
 				"black",
 				"biome",
-        "astro"
+        "astro",
+        "jdtls"
 				-- "gdtoolkit", -- Change "gdscript" to "gdtoolkit"
 			},
 		},
@@ -31,13 +32,12 @@ return {
 				"html",
 				"cssls",
 				"tailwindcss",
-				"gopls",
 				"clangd",
 				"rust_analyzer",
 				"tombi",
 				"zls",
 				"pyright",
-				-- "intelephense",
+				"intelephense",
 			},
 		},
 	},
