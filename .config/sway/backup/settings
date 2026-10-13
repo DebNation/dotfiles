@@ -30,4 +30,4 @@ set $cursor_theme "Adwaita"
 set $cursor_size 24
 
 # Font
-font pango: JetBrainsMono Nerd Font 16
+font pango: JetBrainsMono Nerd Font 10

@@ -1,0 +1,44 @@
+# ==============================================================================
+# VARIABLES
+# ==============================================================================
+
+# Modifier
+set $mod Mod1
+
+# Navigation
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Applications
+set $term kitty
+set $menu rofi -show drun
+
+# ------------------------------------------------------------------------------
+# Colors
+# ------------------------------------------------------------------------------
+
+set $accent #afa193
+set $bg #101010
+set $bg-alt #252525
+set $fg #f6f1ea
+
+# ------------------------------------------------------------------------------
+# Fonts
+# ------------------------------------------------------------------------------
+
+set $font "Noto Sans Regular 12"
+set $monospace_font "IosevkaTermSlab Nerd Font 10"
+
+# Sway font
+set $sway_font "JetBrainsMono Nerd Font 10"
+
+# ------------------------------------------------------------------------------
+# GTK / Icons / Cursor
+# ------------------------------------------------------------------------------
+
+set $gtk_theme Adwaita-dark
+set $icon_theme Papirus-Dark
+set $cursor_theme Vimix-cursors
+set $cursor_size 24

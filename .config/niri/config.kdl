@@ -18,8 +18,8 @@ environment {
 
 }
 cursor {
-  xcursor-theme "BreezeX-Light"
-  xcursor-size 28
+  xcursor-theme "Vimix-cursors"
+  xcursor-size 24
   hide-when-typing
   hide-after-inactive-ms 1000
 }

@@ -1,275 +1,291 @@
 include /etc/sway/config.d/*
-include ~/.config/sway/settings
 
-set $script_dir /usr/local/bin
 
-exec dbus-update-activation-environment --all
+gaps inner 2px
+gaps outer 2px
 
-# GTK SETTINGS
-exec_always {
-    gsettings set org.gnome.desktop.interface gtk-theme $gtk_theme
-    gsettings set org.gnome.desktop.interface icon-theme $icon_theme
-    gsettings set org.gnome.desktop.interface font-name $font
-    gsettings set org.gnome.desktop.interface monospace-font-name $monospace_font
-    gsettings set org.gnome.desktop.wm.preferences button-layout ':'
-    gsettings set org.gnome.desktop.interface cursor-theme $cursor_theme
-    gsettings set org.gnome.desktop.interface cursor-size $cursor_size
+default_border pixel 2px
+default_floating_border pixel 2px
 
-    flatpak override --user --env=GTK_THEME=$gtk_theme
-    flatpak override --user --env=ICON_THEME=$icon_theme
+# cursor
+seat seat0 xcursor_theme Bibata-Original-Ice 20
 
-    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+# Status Bar:
+bar {
+  status_command ~/.config/sway/statuscommand 
+  # font Terminess Nerd Font Bold Regular 12
+  font caelusevka Bold Regular 10
+  position top
+  workspace_min_width 36
+  tray_padding 4
+  colors {
+    background #141514
+    statusline #ef934d
+    separator #ef934d
+    focused_background #1e1f1e
+    focused_statusline #ef934d
+    focused_separator #ef934d
+    focused_workspace #ef934d #ef934d #141514
+    active_workspace #7ec97e #7ec97e #141514
+    inactive_workspace #3b403c #3b403c #f4decd
+    urgent_workspace #f16e65 #f16e65 #141514
+    binding_mode #71b4d6 #71b4d6 #141514
+  }
 }
 
-seat seat0 xcursor_theme $cursor_theme $cursor_size
+# -Colors-
+# name                    border  bg      text    ind     child_border
+client.focused            #ef944d #141514 #f4decd #ef944d #ef944d
+client.focused_inactive   #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.unfocused          #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.urgent             #f16e65 #141514 #f4decd #f16e65 #f16e65
+client.placeholder        #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
 
-# OUTPUT CONFIGURATION
+# Swayfx
+# comment these out if you don't use swayfx
+#blur enable
+#corner_radius 6
+#shadows enable
 
-# Monitor
-output eDP-1 resolution 1920x1080@60Hz adaptive_sync on allow_tearing false
-
-exec --no-startup-id brightnessctl set 5%
-exec --no-startup-id  swaync
-#exec swayidle -w timeout 900 'swaylock --color 2e2e2e'
-# Turn off the screen after 15 minutes of inactivity (900 seconds).
-exec swayidle -w timeout 500 'swaylock --color 2e2e2e; swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-# exec --no-startup-id wl-paste -t text --watch clipman store --no-persist
-exec_always --no-startup-id autotiling
-
-# Wallpaper
-output * bg ~/.config/hypr/walls/forest-cabin-sleeping-fox-mushrooms-desktop-wallpaper.jpg fill
+# ==============================================================================
 
 
-# # IDLE CONFIGURATION
-# exec swayidle -w \
-#     timeout 420 $script_dir/lock \
-#     timeout 410 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#     before-sleep $script_dir/lock
-#
-# for_window [class="^.*"] inhibit_idle fullscreen
-# for_window [app_id="^.*"] inhibit_idle fullscreen
 
 
-# WINDOW DECORATIONS
-
-gaps inner 0
-gaps outer 0
-smart_gaps off
-
-default_border pixel 2
-default_floating_border pixel 2
-
-# FLOATING RULES
-# for_window [window_type="dialog"] floating enable
-# for_window [window_role="dialog"] floating enable
-#
-# for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
-# for_window [app_id="galculator"] floating enable
-# for_window [instance="gufw.py"] floating enable
-#
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+# ==============================================================================
+# VARIABLES
+# ==============================================================================
+# Modifier Key (Mod1 = Alt, Mod4 = Super/Windows)
 set $mod Mod1
-# Home row direction keys, like vim
+
+# Movement Keys (Vim style)
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
+# Preferred Applications
 set $term foot 
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | wmenu | xargs swaymsg exec --
+set $menu 'rofi -show drun'
 
-# set $menu wofi --allow-images --gtk-dark --show=drun
-set $menu 'wofi --show drun'
 
-# INPUT CONFIGURATION
+# GTK & Font Variables
+# set $font "Noto Sans Regular 12"
+# set $monospace_font "IosevkaTermSlab Nerd Font 10"
+# set $icon_theme "Papirus-Dark"
+# set $cursor_theme "Vimix-cursors"
+# set $cursor_theme "breeze_cursors"
+# set $cursor_theme "Adwaita"
+# set $cursor_size 24
+# set $gtk_theme "Adwaita-dark"
+
+font pango: JetBrainsMono Nerd Font 10
+
+# ==============================================================================
+# AUTOSTART
+# ==============================================================================
+# Setup initial brightness
+exec brightnessctl set 10%
+exec --no-startup-id dbus-update-activation-environment --all
+
+
+# Idle management & Lock screen
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 111111' \
+    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 1800 'loginctl suspend' \
+    before-sleep 'swaylock -f -c 111111'
+
+
+set $gnome_schema org.gnome.desktop.interface
+exec_always {
+    # gsettings set $gnome_schema gtk-theme  $gtk_theme
+    # gsettings set $gnome_schema icon-theme  $icon_theme
+    # gsettings set $gnome_schema cursor-theme  $cursor_theme
+    # gsettings set $gnome_schema font-name 'Sans 10'
+    # test -f ~/.Xresources && xrdb -merge ~/.Xresources
+
+    # pidof /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+    pidof dunst || dunst
+    wl-paste --type text --watch cliphist store
+}
+# seat seat0 xcursor_theme $cursor_theme  $cursor_size
+
+# ==============================================================================
+# OUTPUT (MONITORS)
+# ==============================================================================
+# Laptop Monitor
+output eDP-1 {
+    mode 1920x1080@60Hz
+    pos 0 0
+    scale 1
+}
+
+# External Monitor
+output HDMI-A-1 {
+    mode 1920x1080@180Hz
+    scale 1
+}
+
+# Default Wallpaper
+output * bg ~/.config/wallpaper/zeus.png fill
+
+# Set default workspaces on startup
+exec swaymsg "workspace 6; workspace 1"
+
+# ==============================================================================
+# INPUT DEVICES
+# ==============================================================================
 input type:pointer {
     accel_profile "flat"
-    pointer_accel 0.12
+    pointer_accel -0.2
 }
 
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
-
-    # Kill focused window
-    bindsym $mod+Shift+q kill
-
-    # Start your launcher
-    bindsym $mod+d exec $menu
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
-
-    # Reload the configuration file
-    bindsym $mod+Shift+c reload
-    bindsym $mod+Shift+r exec swaymsg reload
-
-    # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-#
-    bindsym  $mod+y exec swaylock --color 2e2e2e
-
-    # bindsym  $mod+Shift+v exec clipman pick -t wofi
-    bindsym $mod+Shift+n exec swaync-client -t -sw
-
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
-    # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
-
-    # Switch the current container between different layout styles
-    # bindsym $mod+s layout stacking
-    # bindsym $mod+w layout tabbed
-    # bindsym $mod+e layout toggle split
-
-    # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
-# Toggle the current focus between tiling and floating mode
-    bindsym $mod+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-#
-
-# UTILITIES/ACTION KEYBINDINGS
-
-# Special keys to adjust volume via PulseAudio
-# bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-# bindsym --locked XF86AudioLowerVolume exec $script_dir/volume-decrease
-# bindsym --locked XF86AudioRaiseVolume exec $script_dir/volume-increase
-
-# Special keys to adjust brightness via brightnessctl
-# bindsym --locked XF86MonBrightnessDown exec $script_dir/brightness-decrease
-# bindsym --locked XF86MonBrightnessUp exec $script_dir/brightness-increase
-# Special key to take a screenshot with grim
-# bindsym Print exec $script_dir/screenshot-menu
-
-
-# Brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-# Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
-bindsym XF86AudioMute  exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-
-# Screenshot
-# screenshot of a region
-bindsym $mod+S exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of region taken" -t 1000
-# screenshot of the whole screen
-bindsym Print exec mkdir -p ~/Pictures/Screenshots && grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of whole screen taken" -t 1000
-# Display power menu
-
-# bindsym --release $mod+Mod1+q exec $script_dir/power-menu
-
-# STATUS BAR
-bar {
-    position top
-
-    status_command ~/.config/i3/i3statuscommand 
-    # status_command i3status # or i3blocks
-    font pango:Hack Nerd Font SemiBold 10
-    position top
-
-    # swaybar_command waybar
-    
-    icon_theme $icon_theme
-
-    colors {
-        statusline $fg
-        background $bg
-        #                   border  bg      text
-        focused_workspace   $accent $accent $bg
-        inactive_workspace  $bg     $bg     $fg
-        urgent_workspace    $bg     $bg     $fg
-    }
+input type:touchpad {
+    dwt enabled
+    tap disabled
+    natural_scroll disabled
+    middle_emulation enabled
+    pointer_accel 1.0
+    accel_profile flat
 }
 
-# WINDOW COLORS
+# ==============================================================================
+# APPEARANCE & THEMING
+# ==============================================================================
+# Gaps & Borders
+# gaps inner 0
+# gaps outer 0
+# smart_gaps off
+# default_border pixel 2
+# default_floating_border pixel 2
+
+
+# Window Colors
 # class                 border  backgr. text    indicator child_border
-client.focused          $accent $bg     $fg     $accent   $accent
-client.focused_inactive $bg     $bg     $fg     $bg       $bg
-client.unfocused        $bg     $bg     $fg     $bg       $bg
-client.urgent           $bg     $bg     $fg     $bg       $bg
-client.placeholder      $bg     $bg     $fg     $bg       $bg
+client.focused            #ef944d #141514 #f4decd #ef944d #ef944d
+client.focused_inactive   #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.unfocused          #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
+client.urgent             #f16e65 #141514 #f4decd #f16e65 #f16e65
+client.placeholder        #1e1f1e #141514 #f4decd #1e1f1e #1e1f1e
 
-client.background       $bg
+# ==============================================================================
+# KEYBINDINGS
+# ==============================================================================
+# --- Basics ---
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r exec swaymsg reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+y exec swaylock --ignore-empty-password --show-failed-attempts --color 1e1e1e
+bindsym $mod+v exec sh ~/.config/sway/cliphist-rofi.sh
+bindsym $mod+Shift+d output HDMI-A-1 toggle
+bindsym $mod+Tab workspace back_and_forth
 
-# AUTOSTART
-exec_always {
-    pidof /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 || /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-    pidof nm-applet || nm-applet
-    pidof dunst || dunst
-    pidof steam || steam -silent
-    pidof Enpass || QT_SCALE_FACTOR=2 /opt/enpass/Enpass -minimize
-}
+# --- Drag & Drop ---
+floating_modifier $mod normal
+
+# --- Focus Navigation ---
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# --- Move Windows ---
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# --- Layout ---
+bindsym $mod+m splith
+bindsym $mod+n splitv
+bindsym $mod+e layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
+bindsym $mod+f fullscreen
+bindsym $mod+space floating toggle
+bindsym $mod+a focus parent
+
+# --- Workspaces (Routing) ---
+workspace 1 output HDMI-A-1
+workspace 2 output HDMI-A-1
+workspace 3 output HDMI-A-1
+workspace 4 output HDMI-A-1
+workspace 5 output HDMI-A-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10 output eDP-1
+
+# --- Workspace Switching ---
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+# --- Move Container to Workspace ---
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# --- Media, Audio & Brightness ---
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl play-pause
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioStop exec playerctl stop
+
+# --- Screenshots ---
+bindsym $mod+S exec mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of region taken" -t 1000
+bindsym Print exec mkdir -p ~/Pictures/Screenshots && grim - | wl-copy && wl-paste > ~/Pictures/Screenshots/Screenshot-$(date +%F_%T).png && dunstify "📸 Screenshot of whole screen taken" -t 1000
+
+
+## Tweaks
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
+#Firefox
+for_window [title = "About Mozilla Firefox"] floating enable
+for_window [window_role = "About"] floating enable
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable
+for_window [title = "Firefox - Sharing Indicator"] kill
+for_window [title = "Firefox — Sharing Indicator"] kill
+#Steam
+for_window [class="^(steam$)" title="^(?!Steam$)"] floating enable
