@@ -30,7 +30,6 @@ autoload -Uz compinit
 compinit
 
 
-
 # History
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -47,7 +46,6 @@ setopt hist_find_no_dups
 
 # Aliases
 # alias ls='ls --color'
-alias vim='nvim'
 alias c='clear'
 alias grep='grep --color=auto'
 alias yay='paru'
@@ -75,11 +73,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
-export PATH="$PATH:/home/debnation/.local/bin"
+export PATH="$PATH:/home/tinkerist/.local/bin"
 
 
 # pnpm
-export PNPM_HOME="/home/endofnation/.local/share/pnpm"
+export PNPM_HOME="/home/tinkerist/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -87,28 +85,24 @@ esac
 
 
 # flatpak
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+# export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+#
+# export XDG_DATA_DIRS="/usr/local/share:/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
 
 
 setopt NO_NOMATCH
 export PATH="$HOME/go/bin:$PATH"
 eval "$(starship init zsh)"
-export PATH="${PATH}:/home/endofnation/bin"
+export PATH="${PATH}:/home/tinkerist/bin"
 
-# pnpm
-export PNPM_HOME="/home/endofnation/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-#
 export EDITOR=nvim
 # source "$HOME/.cargo/env"
 fastfetch
 
 # bun completions
-[ -s "/home/endofnation/.bun/_bun" ] && source "/home/endofnation/.bun/_bun"
+[ -s "/home/tinkerist/.bun/_bun" ] && source "/home/tinkerist/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
@@ -119,5 +113,20 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 FNM_PATH="/home/tinkerist/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env --shell bash)"
+  eval "$(fnm env --shell zsh)"
 fi
+
+# pnpm
+export PNPM_HOME="/home/tinkerist/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+#DOOM 
+export PATH="$HOME/.config/emacs/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/tinkerist/.local/bin:$PATH"
